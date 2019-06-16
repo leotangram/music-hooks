@@ -7,9 +7,14 @@ function App() {
   const [lyric, setLyric] = useState([])
   const [info, setInfo] = useState({})
 
+  // Método para consultar la API de letras de canciones
+  const consultAPILetter = search => {
+    console.log(search)
+  }
+
   return (
     <Fragment>
-      <Form />
+      <Form consultAPILetter={consultAPILetter} />
     </Fragment>
   )
 }

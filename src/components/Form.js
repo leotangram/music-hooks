@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Form() {
+function Form({ consultAPILetter }) {
   const [search, setSearch] = useState({
     artist: '',
     song: ''
@@ -14,11 +14,20 @@ function Form() {
     })
   }
 
+  // Cuando hacemos submit al form
+  const sendInfo = e => {
+    e.preventDefault()
+    consultAPILetter(search)
+  }
+
   return (
     <div className='bg-info'>
       <div className='container'>
         <div className='row'>
-          <form className='col card text-white bg-transparent  mb-5 pt-5 pb-2'>
+          <form
+            className='col card text-white bg-transparent  mb-5 pt-5 pb-2'
+            onSubmit={sendInfo}
+          >
             <fieldset>
               <legend className='text-center'>Buscador Letras Canciones</legend>
               <div className='row'>
