@@ -1,6 +1,19 @@
 import React, { useState } from 'react'
 
 function Form() {
+  const [search, setSearch] = useState({
+    artist: '',
+    song: ''
+  })
+
+  // Función para actualizar el state de los inputs
+  const updateState = e => {
+    setSearch({
+      ...search,
+      [e.target.name]: e.target.value
+    })
+  }
+
   return (
     <div className='bg-info'>
       <div className='container'>
@@ -17,6 +30,7 @@ function Form() {
                       className='form-control'
                       name='artist'
                       placeholder='Nombre Artista'
+                      onChange={updateState}
                       required
                     />
                   </div>
@@ -29,6 +43,7 @@ function Form() {
                       className='form-control'
                       name='song'
                       placeholder='Nombre Canción'
+                      onChange={updateState}
                       required
                     />
                   </div>
