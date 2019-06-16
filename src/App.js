@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react'
 import Form from './components/Form'
 import axios from 'axios'
 import Song from './components/Song'
+import Info from './components/Info'
 
 function App() {
   // Utilizar useSsate con 3 states diferentes
@@ -27,11 +28,13 @@ function App() {
 
   // Método para consultar la API de información de la banda
   const consultAPIInfo = async () => {
-    const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artist}`
+    if (artist) {
+      const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artist}`
 
-    const result = await axios(url)
+      const result = await axios(url)
 
-    setInfo(result.data.artists[0])
+      setInfo(result.data.artists[0])
+    }
   }
 
   useEffect(() => {
@@ -42,9 +45,13 @@ function App() {
     <Fragment>
       <Form consultAPILetter={consultAPILetter} />
       <div className='container mt-5'>
-        <div className='col-md-6'>...</div>
-        <div className='col-md-6'>
-          <Song lyric={lyric} />
+        <div className='row'>
+          <div className='col-md-6'>
+            <Info info={info} />
+          </div>
+          <div className='col-md-6'>
+            <Song lyric={lyric} />
+          </div>
         </div>
       </div>
     </Fragment>
