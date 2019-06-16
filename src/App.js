@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import Form from './components/Form'
 import axios from 'axios'
+import Song from './components/Song';
 
 function App() {
   // Utilizar useSsate con 3 states diferentes
@@ -24,6 +25,12 @@ function App() {
   return (
     <Fragment>
       <Form consultAPILetter={consultAPILetter} />
+      <div className='container mt-5'>
+        <div className='col-md-6'>...</div>
+        <div className='col-md-6'>
+          <Song lyric={lyric} />
+        </div>
+      </div>
     </Fragment>
   )
 }
